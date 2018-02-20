@@ -1,0 +1,55 @@
+DECLARE cores: INTEGER
+DECLARE frequency: FLOAT
+DECLARE voltage: FLOAT
+DECLARE temperature: FLOAT
+DECLARE category: INTEGER
+
+DECLARE max_voltage: FLOAT
+DECLARE max_temperature: FLOAT
+DECLARE max_frequency: FLOAT
+DECLARE min_frequency: FLOAT
+
+
+frequency <- max_frequency
+
+
+CASE OF
+    cores = 6: category <- 1
+    cores >= 4: category <- 2
+    cores >= 2: category <- 3
+    OTHERWISE: category <- 4
+ENDCASE
+
+WHILE pass =! TRUE:
+    pass <- TRUE
+    limits <- [max_voltage,max_temparature]
+    IF Test(data,limits):
+    # do something here
+    IF frequency < min_frequency:
+        category = 4
+        ENDWHILE
+    frequency <- frequency - 0.1
+ENDWHILE
+
+
+PROCEDURE InputData()
+    INPUT voltage
+    INPUT temperature
+    INPUT cores
+    data <- [voltage,temperature,cores]
+    RETURN data
+ENDPROCEDURE
+
+PROCEDURE Test(pass,data,limits)
+    IF data(0) > limits(0):
+        pass <- FALSE
+    ELSE IF data(1) > limits(1):
+        pass <- FALSE
+    RETURN pass
+ENDPROCEDURE
+
+
+
+
+
+
