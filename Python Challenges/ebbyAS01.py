@@ -1,4 +1,3 @@
-num = 0
 nlist = [1,6,9,3,5,11]
 
 for j in range(len(nlist)):
