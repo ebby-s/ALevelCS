@@ -1,10 +1,17 @@
-nlist = [1,6,9,3,5,11]
+import datetime
+def sort(nlist):
+    done = 1
+    while done != 0:
+        done = 0
+        for i in range(len(nlist)-1):
+            if nlist[i] > nlist[i+1]:
+                done += 1
+                num = nlist[i]
+                nlist[i]=nlist[i+1]
+                nlist[i+1] = num
+    return nlist
 
-for j in range(len(nlist)):
-    for i in range(j):
-        if nlist[i] > nlist[i+1]:
-            num = nlist[i]
-            nlist[i]=nlist[i+1]
-            nlist[i+1] = num
-
+start_time = datetime.datetime.now()
+nlist = sort([4,1,7,3,9,4,2,6,7])
+print(datetime.datetime.now()-start_time)
 print(nlist)
