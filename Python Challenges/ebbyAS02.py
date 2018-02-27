@@ -1,10 +1,14 @@
-word = "aaeiu"
-wlen = len(word)
+def search(word,letter):
+    found = False
+    positions = []
+    for i in range (0,len(word),1):
+        if word[i] == letter:
+            found = True
+            positions.append(i)
+    return {"found":found,"positions":positions}
 
-while True:
-    cletter = input("Enter a letter to search: ")
-    for i in range (0,wlen,1):
-        if word[i] == cletter:
-            print(i)
-        else:
-            "Do nothing"
+word = "aaeiou"
+word = word.split()
+test = search(word,"a")
+print(test["found"])
+print(test["positions"])
