@@ -7,8 +7,7 @@ def search(word,letter):
             positions.append(i)
     return {"found":found,"positions":positions}
 
-word = "aaeiou"
-word = word.split()
+word = ["a","a","e","i","u"]
 test = search(word,"a")
 print(test["found"])
 print(test["positions"])
