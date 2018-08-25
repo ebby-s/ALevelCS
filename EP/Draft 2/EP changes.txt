@@ -14,3 +14,7 @@
 14- Changed main font to bold.   Fixed the function to split text.
 15- Added text to menu button in instructions page.   Function added to display warning screen when something goes wrong.
 16- Added difficulty levels, changed the generator function for difficulty levels because a different file is used for each difficulty level.
+17- Added settings file to allow user to choose files for different difficults levels and edit the difficulty selection menu.
+18- Changed load_text to more efficiently read settings file. Changed cursor to diamond. Added reactions to buttons when clicked. Screen size is now constant.
+19- Buttons now react to cursor hovering over them. Made code easier to read. Limited space for dragging answer boxes.
+20- Correct answer is displayed on screen if theinput answer is wrong.
