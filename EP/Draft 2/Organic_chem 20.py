@@ -15,10 +15,10 @@ class Score:
 
     def __init__(self):
         '''Stores score'''
-        self.score = 0
-        self.w_count = 0
-        self.l_count = 0
-        self.history = []
+        self.score = 0        # current score
+        self.w_count = 0      # count of wins
+        self.l_count = 0      # count of losses
+        self.history = []     # stores wins and losses
 
     def show_score(self):
         return str(self.score)
