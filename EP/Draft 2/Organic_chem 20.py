@@ -8,7 +8,7 @@ title_font = pygame.font.SysFont('Courier', 40)
 main_font = pygame.font.SysFont('Courier',18,True)
 pygame.mouse.set_cursor(*pygame.cursors.diamond)
 screen = pygame.display.set_mode((1344,756))
-pygame.display.set_caption("Organic Chemistry")
+pygame.display.set_caption("Chem Processor")
 
 # Score object, evaluates score
 class Score:
@@ -63,7 +63,7 @@ def main_menu():
     pygame.draw.rect(screen, (255,0,36), inst_button)
     
     texts = []
-    for text in ["Organic chem","Start","Instrucions"]:
+    for text in ["Chem Processor","Start","Instrucions"]:
         texts.append(title_font.render(text,True,(0,0,0)))
     
     
@@ -86,7 +86,7 @@ def main_menu():
                 pygame.draw.rect(screen, (208,0,36), button)
             else:
                 pygame.draw.rect(screen, (255,0,36), button)
-        for i,pos in enumerate([(527,50),(607,200),(542,330)]):
+        for i,pos in enumerate([(510,50),(607,200),(542,330)]):
             screen.blit(texts[i],pos)
         pygame.display.flip()
     pygame.quit()
