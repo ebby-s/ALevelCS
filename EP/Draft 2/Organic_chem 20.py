@@ -1,7 +1,6 @@
 import pygame
 import random
 import time
-import chem_names
 
 pygame.init()
 bgcolor = (36,255,0)
@@ -9,17 +8,17 @@ title_font = pygame.font.SysFont('Courier', 40)
 main_font = pygame.font.SysFont('Courier',18,True)
 pygame.mouse.set_cursor(*pygame.cursors.diamond)
 screen = pygame.display.set_mode((1344,756))
-pygame.display.set_caption("Organic Chemistry")
+pygame.display.set_caption("Chem Processor")
 
 # Score object, evaluates score
 class Score:
 
     def __init__(self):
         '''Stores score'''
-        self.score = 0
-        self.w_count = 0
-        self.l_count = 0
-        self.history = []
+        self.score = 0        # current score
+        self.w_count = 0      # count of wins
+        self.l_count = 0      # count of losses
+        self.history = []     # stores wins and losses
 
     def show_score(self):
         return str(self.score)
@@ -56,17 +55,17 @@ class Score:
 
 # Displays main menu
 def main_menu():
-    print(chem_names.interpret('methyl ethanoate'))
-    print(chem_names.interpret("2-bromo, 2,3-dichloro pent-4-ene"))
-    print(chem_names.interpret('pent-2,4-diol'))
     screen.fill(bgcolor)
+    
     start_button = pygame.rect.Rect(592, 185, 160, 80)
     inst_button = pygame.rect.Rect(527, 315, 300, 80)
     pygame.draw.rect(screen, (255,0,36), start_button)
     pygame.draw.rect(screen, (255,0,36), inst_button)
+    
     texts = []
-    for text in ["Organic chem","Start","Instrucions"]:
+    for text in ["Chem Processor","Start","Instrucions"]:
         texts.append(title_font.render(text,True,(0,0,0)))
+    
     
     while True:
         ev = pygame.event.poll()
@@ -87,7 +86,7 @@ def main_menu():
                 pygame.draw.rect(screen, (208,0,36), button)
             else:
                 pygame.draw.rect(screen, (255,0,36), button)
-        for i,pos in enumerate([(527,50),(607,200),(542,330)]):
+        for i,pos in enumerate([(510,50),(607,200),(542,330)]):
             screen.blit(texts[i],pos)
         pygame.display.flip()
     pygame.quit()
@@ -98,7 +97,7 @@ def inst_page():
     inst_part1 = "The input is displayed on the left, drag processes onto the screen so that"
     inst_part2 = "it is converted to the output displayed on the right."
     inst_text = inst_part1+' '+inst_part2
-    
+
     menu_button = pygame.rect.Rect(30,50,60,40)
     start_button = pygame.rect.Rect(592, 615, 160, 80)
     pygame.draw.rect(screen, (255,0,36), menu_button)
@@ -112,7 +111,8 @@ def inst_page():
 
     texts = []
     for text,font in [["Instructions",title_font],["Start",title_font],["Menu",main_font]]:
-        texts.append(font.render(text,True,(0,0,0)))    
+        texts.append(font.render(text,True,(0,0,0)))
+    
 
     while True:
         ev = pygame.event.poll()
@@ -312,6 +312,7 @@ def game(question):
                                     elif ev.type == pygame.MOUSEBUTTONDOWN:
                                         break
                             return False
+                            
                 for i,button in enumerate(ans_buttons):
                     if button.collidepoint(ev.pos):
                         ans_colors[i] = (236,236,0)
@@ -319,9 +320,12 @@ def game(question):
                         mouse_x, mouse_y = ev.pos
                         offset_x = button.x - mouse_x
                         offset_y = button.y - mouse_y
+                        
+                        
         elif ev.type == pygame.MOUSEBUTTONUP:
             if ev.button == 1:            
                 drag[0] = False
+                
         elif ev.type == pygame.MOUSEMOTION:
             if drag[0]:
                 mouse_x, mouse_y = ev.pos
@@ -336,6 +340,7 @@ def game(question):
                     ans_colors[i] = (236,0,55)
                 elif button.y >= 470:
                     ans_colors[i] = (0,102,255)
+
         screen.fill(bgcolor)
         screen.fill((255,0,36),(0,550,1344,20))
         print_labled_buttons(buttons,button_texts,(255,0,36),[10,10])
@@ -365,7 +370,7 @@ def generate(diff):
             k = random.choice(allp)
             if k not in ps:
                 ps.append(k)
-
+        
         random.shuffle(ps)
     return [i[val],o[val],p[val],ps]
 
@@ -375,6 +380,7 @@ def correct(correct_ans,ans_order,ans):
     correct_numbers = []
     for p in correct_ans:
         correct_numbers.append(ans_order.index(p))
+
     ans_list = []
     for a in ans:
         ans_list.append(a[0])
