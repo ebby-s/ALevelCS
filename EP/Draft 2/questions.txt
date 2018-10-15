@@ -1,5 +1,0 @@
-i1;o1;p11;p12;p13
-i2;o2;p21
-i3;o3;p31;p32
-i4;o4;p41
-pentan-3-ol;pentan-3-one;K2Cr2O7(aq)
