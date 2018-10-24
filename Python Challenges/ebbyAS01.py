@@ -1,5 +1,7 @@
 import datetime
-def sort(nlist):
+unsorted = [6,3,11,4,97,23,10,45,37,26,2,7,3]
+
+def bubble_sort(nlist):
     done = 1
     while done != 0:
         done = 0
@@ -12,6 +14,6 @@ def sort(nlist):
     return nlist
 
 start_time = datetime.datetime.now()
-nlist = sort([4,1,7,3,9,4,2,6,7])
+nlist = bubble_sort(unsorted)
 print(datetime.datetime.now()-start_time)
 print(nlist)
