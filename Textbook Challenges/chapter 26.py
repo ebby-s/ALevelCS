@@ -59,15 +59,6 @@ class linked_queue:
         self.length -= 1
         return item
 
-def print_list(list,first = True):
-    if first:
-        print("[", end = " ")
-    if list.next == None:
-        print(int(list),"]")
-        return
-    print(int(list),",",end = " ")
-    print_list(list.next,False)
-
 test = linked_queue()
 for i in range(10):
     num = random.randint(4,64)
