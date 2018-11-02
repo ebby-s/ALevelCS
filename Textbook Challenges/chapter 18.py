@@ -1,4 +1,5 @@
 import turtle
+import os
 
 def koch(t, order, size,first=False):
     t.speed(100)
@@ -103,6 +104,11 @@ def flatten(xs):
     return flat
 
 def fibonacci(order):
+    while order > 1:
+        return fibonacci(order-1)+fibonacci(order-2)
+    return 1
+
+def fibonacci2(order):
     x = 1
     y = 0
     for i in range(order):
@@ -113,15 +119,32 @@ def fibonacci(order):
             y += x
             print(y)
 
+def get_dirlist(path):
+    dirlist = os.listdir(path)
+    dirlist.sort()
+    return dirlist
 
+def print_files(path, prefix = ""):
+    """ Print recursive listing of contents of path """
+    if prefix == "":  # Detect outermost call, print a heading
+        print("Folder listing for", path)
+        prefix = "| "
+    dirlist = get_dirlist(path)
+    for f in dirlist:
+        fullname = os.path.join(path, f)   # Turn name into full pathname
+        if os.path.isdir(fullname):        # If a directory, recurse.
+            print_files(fullname,prefix+fullname)
+        else:
+            print(fullname)
 
-
-        
-
-
-
-
-
-
-
-    
+def litter(path, prefix = ""):
+    """ Print recursive listing of contents of path """
+    if prefix == "":  # Detect outermost call, print a heading
+        print("Folder listing for", path)
+        prefix = "| "
+    dirlist = get_dirlist(path)
+    for f in dirlist:
+        fullname = os.path.join(path, f)   # Turn name into full pathname
+        if os.path.isdir(fullname):        # If a directory, recurse.
+            print(fullname)
+            litter(fullname,prefix+fullname)
