@@ -1,8 +1,13 @@
+import random
 
-def dvt(x=None,v=None,t=None):
-    if x == None:
-        return v*t
-    elif v == None:
-        return x/t
-    elif t == None:
-        return x/v
+def avg(nums):
+    total = 0
+    for num in nums:
+        total += num
+    return total/len(nums)
+
+rand_nums = [random.randint(0,255) for i in range(50)]
+print(rand_nums)
+print(min(rand_nums))
+print(max(rand_nums))
+print(avg(rand_nums))
