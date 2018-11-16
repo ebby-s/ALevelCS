@@ -34,15 +34,19 @@ def findModInverse(a, m):
 
 def generateKey(keySize):
     p = generateLargePrime(keySize)
+    print("p done")
     q = generateLargePrime(keySize)
+    print("q done")
     n = p * q
 
     while True:
         e = random.randrange(2 ** (keySize - 1), 2 ** (keySize))
         if gcd(e, (p - 1) * (q - 1)) == 1:
             break
+    print("e done")
 
     d = findModInverse(e, (p - 1) * (q - 1))
+    print("d done")
     publicKey = (n, e)
     privateKey = (n, d)
     print('Public key:',publicKey)
