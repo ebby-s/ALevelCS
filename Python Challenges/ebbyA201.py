@@ -24,6 +24,7 @@ def insert(tree,item):
             elif side == "l":
                 last.left = node
                 last.right = None
+            break
 
 def find(tree,item):
     if tree.cargo == item: return True
@@ -32,3 +33,13 @@ def find(tree,item):
     if tree.left != None:
         if contains_x(tree.left): return True
     return False
+
+def delete(tree):
+    last = tree
+    while True:
+        direction = input("Direction(r/l): ")
+        if direction == "r": last = last.right
+        elif direction == "l": last = last.left
+        else:
+            last = None
+            break
