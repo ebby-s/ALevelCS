@@ -10,7 +10,13 @@ class BookRecord:
         self.isbn = None
         self.title = None
         self.loan = None
+    def __str__(self):
+        return "{0} {1} {2}".format(self.isbm,self.title,self.loan)
 
 dummyRecord = BookRecord()
 dummyRecord.isbn = "0000000000"
 
+bookFile = open("BookFile.txt","w")
+for i in range(1,1001):
+    bookFile.write(str(dummyRecord))
+bookFile.close()
