@@ -1,3 +1,5 @@
+import pickle
+
 def LeftToInt(phrase,n):
     return int(phrase[0,n])
 
@@ -16,7 +18,7 @@ class BookRecord:
 dummyRecord = BookRecord()
 dummyRecord.isbn = "0000000000"
 
-bookFile = open("BookFile.txt","w")
+bookFile = open("BookFile.txt","wb")
 for i in range(1,1001):
-    bookFile.write(str(dummyRecord))
+    pickle.dump(dummyRecord,bookFile)
 bookFile.close()
