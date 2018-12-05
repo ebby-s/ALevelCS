@@ -47,11 +47,12 @@ for i in range(5):
     file_full = False
     next_address = address
     while not address_found and not file_full:
-        try: if pickle.load(bookFile).isbn != "0000000000": next_address += 1
+        try:
+            if pickle.load(bookFile).isbn != "0000000000": next_address += 1
+            elif next_address == address: file_full = True
+            else: address_found = True
         except EOFError: next_address = 0
-        elif next_address == address: file_full = True
-        else: address_found = True
-    
+        
     bookFile.seek(next_address)
     write_file("bookFile.txt",pickle.dumps(newBook),next_address)
 bookFile.close()
