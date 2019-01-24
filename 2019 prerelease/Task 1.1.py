@@ -13,7 +13,13 @@ def input_record():
     email = str(input("Enter email: "))
     return name+"#"+email
 
+def valid(text):
+    [name,email] = text.split("#")
+    
+
 StudentFile = open("Student File.txt","w")
 
-while True:
-    
+while yes("Would you like to input a record?"):
+    record = input_record()
+    if valid(record): file.wite(record)
+    else: print("Invalid information")
