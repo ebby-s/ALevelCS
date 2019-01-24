@@ -13,6 +13,3 @@ def add_to_list(list,data):
 test_list = Node(5)
 add_to_list(test_list,4)
 print(test_list.next)
-
-class Stack:
-    def __init__(
