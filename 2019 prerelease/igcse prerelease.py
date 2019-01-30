@@ -54,20 +54,41 @@ def show_items(items):
         print(layout.format(i,int(item),str(item),item.highest_bid()))
 
 def take_bids(items):
-    try: item = int(input("Choose an item: "))
+    try:
+        item = int(input("Choose an item: "))
+        amount = int(input("Enter amount to bid: "))
+        id_number = input("Ender your ID number: ")
+        if items[item].bid(id_number,amount):
+            print("Bid successful")
+        else: print("Bid failed")
+    except:
+        print("Invalid choice")
+        return take_bids(items)
 
-def step1(items):
+def bid_menu(items):
     while True:
         choice = main_menu()
         if choice == 1: show_items(items)
-        elif choice == 2:
-            
-            
+        elif choice == 2: take_bids(items)
+        elif choice == 3: break
+        else: print("Invalid input")
+
+def show_result(items):
+    [sold,unsold] = find_sold(items)
+    layout = "{0:>15} {1:>12}"
+    print("Sold items")
+    print(layout.format("Item number","Final price"))
+    for item in sold:
+        print(layout.format(int(item),item.total))
+    print()
+    print("Unsold items")
+    print(layout.format("Item number","Highest bid"))
+    for item in unsold:
+        print(layout.format(int(item),item.highest_bid()))
 
 items = []
-
-
-
+bid_menu(items)
+show_result()
 
 
 
