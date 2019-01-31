@@ -88,7 +88,7 @@ def show_result(items):
 
 items = []
 bid_menu(items)
-show_result()
+show_result(items)
 
 
 
