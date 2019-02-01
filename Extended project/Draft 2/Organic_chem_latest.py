@@ -1,7 +1,7 @@
 import pygame
 import random
 import time
-import chem_names
+from Chem_names import chem_names_latest as chem_names
 
 pygame.init()
 bgcolor = (36,255,0)
