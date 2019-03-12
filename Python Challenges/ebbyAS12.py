@@ -4,7 +4,7 @@ conv_pseudocode = {"int":"INTEGER","float":"REAL","char":"CHAR","str":"STRING","
                    "for":"FOR","while":"WHILE","def":"FUNCTION","type":"TYPE",
                    "=":"<--","==":"=","in":"IN","range":"RANGE"}
 
-code = open("python code.txt")
+code = open("ebbyAS12.py")
 lines = code.readlines()
 
 output = open("pseudocode.txt","w")
